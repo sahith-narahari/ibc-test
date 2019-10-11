@@ -1,0 +1,1 @@
+This script ensures dependency and environment setup
