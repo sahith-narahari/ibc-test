@@ -1,12 +1,12 @@
 git clone git@github.com:cosmos/gaia
-cd gaia
+cd gaia || exit
 git checkout joon/ibc-gaia-interface
 export GO111MODULE=on
 go mod vendor
 make install
 gaiad version
 gaiacli version
-cd ~ && mkdir ibc-testnets && cd ibc-testnets
+cd .. && mkdir ibc-testnets && cd ibc-testnets
 gaiad testnet -o ibc0 --v 1 --chain-id ibc0 --node-dir-prefix n
 gaiad testnet -o ibc1 --v 1 --chain-id ibc1 --node-dir-prefix n
 
@@ -67,7 +67,7 @@ else
     jq -r '.secret' ibc1/n0/gaiacli/key_seed.json | xclip -sel clip
 fi
 
-gaiacli --home ibc1/n0/gaiacli keys delete n0
+#gaiacli --home ibc1/n0/gaiacli keys delete n0
 
 # seed from ibc1/n0/gaiacli/key_seed.json -> ibc0/n1
 echo "the mnemonic is already copied to clipboard,just paste"
